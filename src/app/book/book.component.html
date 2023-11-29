@@ -1,29 +1,60 @@
-
+<h2 class="heading">Reactive Forms and Validations</h2>
 <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
     <label for="bookName">Book Name:</label>
-    <input type="text" id="bookName" formControlName="bookName"  placeholder="bookname">
-  
+    <input type="text" id="bookName" formControlName="bookName" class="form-control" placeholder="bookname"
+        [ngClass]="{'is-invalid': submit && f.bookName.errors}">
+    <div *ngIf="submit && f.bookName.errors" class="invalid-feedback">
+        <div *ngIf="f.bookName.errors.required">bookName is required</div>
+    </div>
+
     <label for="author">Author:</label>
-    <input type="text" id="author" formControlName="author" placeholder="author" required>
-  
+    <input type="text" id="author" formControlName="author" class="form-control" placeholder="author"
+        [ngClass]="{'is-invalid': submit && f.author.errors}">
+    <div *ngIf="submit && f.author.errors" class="invalid-feedback">
+        <div *ngIf="f.author.errors.required">author is required</div>
+    </div>
+
     <label for="publication">Publication:</label>
-    <input type="text" id="publication" formControlName="publication" placeholder="publication" required>
-  
+    <input type="text" id="publication" formControlName="publication" class="form-control" placeholder="publication"
+        [ngClass]="{'is-invalid': submit && f.publication.errors}">
+    <div *ngIf="submit && f.publication.errors" class="invalid-feedback">
+        <div *ngIf="f.publication.errors.required">publication is required</div>
+    </div>
+
     <label for="price">Price:</label>
-    <input type="number" id="price" formControlName="price" placeholder="price" required>
-  
+    <input type="number" id="price" formControlName="price" class="form-control" placeholder="price"
+        [ngClass]="{'is-invalid': submit && f.price.errors}">
+    <div *ngIf="submit && f.price.errors" class="invalid-feedback">
+        <div *ngIf="f.price.errors.required">price is required</div>
+    </div>
+
     <label for="genre">Genre:</label>
-    <input type="text" id="genre" formControlName="genre" placeholder="genre" required>
-  
+    <input type="text" id="genre" formControlName="genre" class="form-control" placeholder="genre"
+        [ngClass]="{'is-invalid': submit && f.genre.errors}">
+    <div *ngIf="submit && f.genre.errors" class="invalid-feedback">
+        <div *ngIf="f.genre.errors.required">genre is required</div>
+    </div>
+
     <label for="publishedDate">Published Date:</label>
-    <input type="date" id="publishedDate" formControlName="publishedDate" placeholder="publishedDate" required>
-  
+    <input type="date" id="publishedDate" formControlName="publishedDate" class="form-control"
+        placeholder="publishedDate" [ngClass]="{'is-invalid': submit && f.publishedDate.errors}">
+    <div *ngIf="submit && f.publishedDate.errors" class="invalid-feedback">
+        <div *ngIf="f.publishedDate.errors.required">publishedDate is required</div>
+    </div>
+
     <label for="country">Country:</label>
-    <input type="text" id="country" formControlName="country" placeholder="country" required>
-  
+    <input type="text" id="country" formControlName="country" class="form-control" placeholder="country"
+        [ngClass]="{'is-invalid': submit && f.country.errors}">
+    <div *ngIf="submit && f.country.errors" class="invalid-feedback">
+        <div *ngIf="f.country.errors.required">country is required</div>
+    </div>
+
     <label for="description">Description:</label>
-    <textarea id="description" formControlName="description" rows="4" placeholder="description" required></textarea>
-  
-    <button type="submit" [disabled]="!bookForm.valid">Submit</button>
-  </form>
-  
+    <textarea id="description" formControlName="description" class="form-control" rows="4" placeholder="description"
+        [ngClass]="{'is-invalid': submit && f.description.errors}"></textarea>
+    <div *ngIf="submit && f.description.errors" class="invalid-feedback">
+        <div *ngIf="f.description.errors.required">description is required</div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
